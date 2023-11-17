@@ -1,6 +1,7 @@
 package org.lessons.java.charscounter;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +14,8 @@ public class CharsCounter {
 		System.out.print("Inserisci una parola: ");
 		
 		String word = in.nextLine();
+		
+		in.close();
 		
 		Map<Character, Integer> charsCounter = new HashMap<>();
 		
@@ -27,7 +30,16 @@ public class CharsCounter {
 			}
 		}
 		
-		System.out.println(charsCounter);
+		Iterator<Character> itr = charsCounter.keySet().iterator();
+		
+		while (itr.hasNext()) {
+			
+			Character c = itr.next();
+			Integer value = charsCounter.get(c);
+			
+			System.out.println(c + " : " + value);
+			
+		}
 
 	}
 
